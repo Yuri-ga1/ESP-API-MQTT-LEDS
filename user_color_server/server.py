@@ -14,9 +14,11 @@ app.include_router(colors_router)
 app.include_router(device_router)
 app.include_router(users_router)
 
+
 @app.on_event("startup")
 async def startup():
     await database.connect()
+
 
 @app.on_event("shutdown")
 async def shutdown():
@@ -25,7 +27,7 @@ async def shutdown():
 
 @app.get("/")
 async def get_data():
-    return {'message': 'Hello, world'}
+    return {"message": "Hello, world"}
 
 
 if __name__ == "__main__":
